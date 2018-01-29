@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 30, 2018 1:20:42 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Questionnarie" table="questionnarie" catalog="onlinexm" optimistic-lock="version">
+        <id name="qusId" type="java.lang.Integer">
+            <column name="qus_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="questionBank" class="pojo.QuestionBank" fetch="select">
+            <column name="qus_bank_id" />
+        </many-to-one>
+        <property name="examId" type="java.lang.Integer">
+            <column name="exam_id" />
+        </property>
+        <property name="studentId" type="java.lang.Integer">
+            <column name="student_id" />
+        </property>
+        <property name="collectedAns" type="java.lang.Integer">
+            <column name="collected_ans" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 30, 2018 1:20:42 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Batchs" table="batchs" catalog="onlinexm" optimistic-lock="version">
+        <id name="batchId" type="java.lang.Integer">
+            <column name="batch_id" />
+            <generator class="identity" />
+        </id>
+        <property name="batchNo" type="java.lang.Integer">
+            <column name="batch_no" />
+        </property>
+        <property name="seatLimit" type="java.lang.Integer">
+            <column name="seat_limit" />
+        </property>
+        <set name="studentses" table="students" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="batch_id" />
+            </key>
+            <one-to-many class="pojo.Students" />
+        </set>
+    </class>
+</hibernate-mapping>

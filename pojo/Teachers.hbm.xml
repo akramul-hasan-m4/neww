@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 30, 2018 1:20:42 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Teachers" table="teachers" catalog="onlinexm" optimistic-lock="version">
+        <id name="teacherId" type="java.lang.Integer">
+            <column name="teacher_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="users" class="pojo.Users" fetch="select">
+            <column name="user_id" />
+        </many-to-one>
+        <property name="isQuestioner" type="string">
+            <column name="is_questioner" length="45" />
+        </property>
+        <set name="questionBanks" table="question_bank" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="teacher_id" />
+            </key>
+            <one-to-many class="pojo.QuestionBank" />
+        </set>
+        <set name="questionerDefinations" table="questioner_defination" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="teacher_id" />
+            </key>
+            <one-to-many class="pojo.QuestionerDefination" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 30, 2018 1:20:42 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.ExamShedular" table="exam_shedular" catalog="onlinexm" optimistic-lock="version">
+        <id name="esId" type="java.lang.Integer">
+            <column name="es_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="students" class="pojo.Students" fetch="select">
+            <column name="student_id" />
+        </many-to-one>
+        <property name="startTime" type="time">
+            <column name="start_time" length="8" />
+        </property>
+        <property name="end" type="time">
+            <column name="end" length="8" />
+        </property>
+        <property name="date" type="date">
+            <column name="date" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>

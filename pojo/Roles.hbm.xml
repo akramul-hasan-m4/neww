@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 30, 2018 1:20:42 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Roles" table="roles" catalog="onlinexm" optimistic-lock="version">
+        <id name="roleId" type="java.lang.Integer">
+            <column name="role_id" />
+            <generator class="identity" />
+        </id>
+        <property name="roleName" type="string">
+            <column name="role_name" length="45" />
+        </property>
+        <set name="usersRoleas" table="users_rolea" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="role_id" />
+            </key>
+            <one-to-many class="pojo.UsersRolea" />
+        </set>
+    </class>
+</hibernate-mapping>

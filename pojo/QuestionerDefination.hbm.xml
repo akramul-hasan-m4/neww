@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 30, 2018 1:20:42 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.QuestionerDefination" table="questioner_defination" catalog="onlinexm" optimistic-lock="version">
+        <id name="definationId" type="java.lang.Integer">
+            <column name="defination_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="books" class="pojo.Books" fetch="select">
+            <column name="book_id" />
+        </many-to-one>
+        <many-to-one name="chapters" class="pojo.Chapters" fetch="select">
+            <column name="ch_id" />
+        </many-to-one>
+        <many-to-one name="courses" class="pojo.Courses" fetch="select">
+            <column name="course_id" />
+        </many-to-one>
+        <many-to-one name="exam" class="pojo.Exam" fetch="select">
+            <column name="exam_id" />
+        </many-to-one>
+        <many-to-one name="reference" class="pojo.Reference" fetch="select">
+            <column name="ref_id" />
+        </many-to-one>
+        <many-to-one name="teachers" class="pojo.Teachers" fetch="select">
+            <column name="teacher_id" />
+        </many-to-one>
+        <property name="qusLimitation" type="string">
+            <column name="qus_limitation" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

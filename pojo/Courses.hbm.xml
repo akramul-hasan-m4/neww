@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jan 30, 2018 1:20:42 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.Courses" table="courses" catalog="onlinexm" optimistic-lock="version">
+        <id name="courseId" type="java.lang.Integer">
+            <column name="course_id" />
+            <generator class="identity" />
+        </id>
+        <property name="courseName" type="string">
+            <column name="course_name" length="45" />
+        </property>
+        <set name="references" table="reference" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="course_id" />
+            </key>
+            <one-to-many class="pojo.Reference" />
+        </set>
+        <set name="bookses" table="books" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="course_id" />
+            </key>
+            <one-to-many class="pojo.Books" />
+        </set>
+        <set name="exams" table="exam" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="course_id" />
+            </key>
+            <one-to-many class="pojo.Exam" />
+        </set>
+        <set name="questionerDefinations" table="questioner_defination" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="course_id" />
+            </key>
+            <one-to-many class="pojo.QuestionerDefination" />
+        </set>
+        <set name="questionBanks" table="question_bank" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="course_id" />
+            </key>
+            <one-to-many class="pojo.QuestionBank" />
+        </set>
+    </class>
+</hibernate-mapping>
